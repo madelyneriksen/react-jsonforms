@@ -26,3 +26,14 @@ it('passes attributes in attrs to raw html', () => {
 
   expect(wrapper.prop('data-target')).toBe('some_val');
 });
+
+it('calls onchange handler when change is triggered', () => {
+  const onChangeMock = jest.fn(event => event);
+  const wrapper = shallow(<GenericInput name="myInput" onChange={onChangeMock} />);
+
+  wrapper.simulate('change');
+  expect(onChangeMock.mock.calls.length).toBe(1);
+
+  wrapper.simulate('change');
+  expect(onChangeMock.mock.calls.length).toBe(2);
+});
