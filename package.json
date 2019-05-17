@@ -1,0 +1,40 @@
+{
+  "name": "react-jsonforms",
+  "version": "0.1.0",
+  "description": "Declare your forms on the server- render with React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "babel --out-dir='dist' --ignore='__tests__' --ignore='src/setupTests.js' src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madelyneriksen/react-jsonforms.git"
+  },
+  "keywords": [
+    "react",
+    "forms",
+    "jsonforms",
+    "ssr",
+    "productivity"
+  ],
+  "author": "Madelyn Eriksen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madelyneriksen/react-jsonforms/issues"
+  },
+  "homepage": "https://github.com/madelyneriksen/react-jsonforms#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "enzyme": "^3.9.0",
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
