@@ -8,12 +8,14 @@ it('renders without crashing', () => {
   const wrapper = shallow(<GenericInput name="myInput" />);
 });
 
+
 it('passes name to id and name fields', () => {
   const wrapper = shallow(<GenericInput name="myInput" />);
 
   expect(wrapper.prop('id')).toBe('myInput');
   expect(wrapper.prop('name')).toBe('myInput');
 });
+
 
 it('passes attributes in attrs to raw html', () => {
   let attrs = { pattern: '[0-9]{3}' };
@@ -27,6 +29,7 @@ it('passes attributes in attrs to raw html', () => {
   expect(wrapper.prop('data-target')).toBe('some_val');
 });
 
+
 it('calls onchange handler when change is triggered', () => {
   const onChangeMock = jest.fn(event => event);
   const wrapper = shallow(<GenericInput name="myInput" onChange={onChangeMock} />);
@@ -36,4 +39,21 @@ it('calls onchange handler when change is triggered', () => {
 
   wrapper.simulate('change');
   expect(onChangeMock.mock.calls.length).toBe(2);
+});
+
+
+it('accepts different input types', () => {
+  let props = {
+    type: 'number',
+    name: 'myInput',
+  };
+  let wrapper = shallow(<GenericInput {...props} />);
+  expect(wrapper.prop('type')).toBe('number');
+
+  props = {
+    type: 'tel',
+    name: 'myInput',
+  };
+  wrapper = shallow(<GenericInput {...props} />);
+  expect(wrapper.prop('type')).toBe('tel');
 });
