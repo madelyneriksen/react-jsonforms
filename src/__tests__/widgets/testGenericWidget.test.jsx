@@ -6,6 +6,13 @@ import GenericInput from '../../widgets/GenericInput';
 it('renders without crashing', () => {
   /* eslint-disable-next-line */
   const wrapper = shallow(<GenericInput name="myInput" />);
+  expect(wrapper.containsMatchingElement(
+    <input
+      name="myInput"
+      id="myInput"
+      className="form__input"
+    />,
+  )).toBe(true);
 });
 
 
