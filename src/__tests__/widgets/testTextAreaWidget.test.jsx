@@ -16,3 +16,17 @@ it('renders correctly', () => {
     />,
   )).toBe(true);
 });
+
+it('calls onChange handler during change event', () => {
+  const onChangeMock = jest.fn(event => event);
+  const props = {
+    name: 'myInput',
+    onChange: onChangeMock,
+  };
+  const wrapper = shallow(<TextAreaWidget {...props} />);
+  wrapper.simulate('change');
+  expect(onChangeMock.mock.calls.length).toBe(1);
+
+  wrapper.simulate('change');
+  expect(onChangeMock.mock.calls.length).toBe(2);
+});
