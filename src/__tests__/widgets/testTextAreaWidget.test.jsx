@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextArea from '../../widgets/TextArea';
+import TextAreaWidget from '../../widgets/TextAreaWidget';
 
 
 it('renders correctly', () => {
   const props = {
     name: 'myInput',
   };
-  const wrapper = shallow(<TextArea {...props} />);
+  const wrapper = shallow(<TextAreaWidget {...props} />);
   expect(wrapper.containsMatchingElement(
     <textarea
       className="form__input"

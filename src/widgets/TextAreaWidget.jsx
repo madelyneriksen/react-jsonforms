@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextArea = (props) => {
+const TextAreaWidget = (props) => {
   const {
     name,
     attrs,
@@ -19,7 +19,7 @@ const TextArea = (props) => {
   );
 };
 
-TextArea.propTypes = {
+TextAreaWidget.propTypes = {
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
   onChange: PropTypes.func,
@@ -27,10 +27,10 @@ TextArea.propTypes = {
   attrs: PropTypes.object,
 };
 
-TextArea.defaultProps = {
+TextAreaWidget.defaultProps = {
   className: 'form__input',
   onChange: null,
   attrs: {},
 };
 
-export default TextArea;
+export default TextAreaWidget;
