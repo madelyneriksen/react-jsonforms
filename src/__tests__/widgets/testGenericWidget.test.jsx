@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import GenericInput from '../../widgets/GenericInput';
+import GenericWidget from '../../widgets/GenericWidget';
 
 
 it('renders without crashing', () => {
   /* eslint-disable-next-line */
-  const wrapper = shallow(<GenericInput name="myInput" />);
+  const wrapper = shallow(<GenericWidget name="myInput" />);
   expect(wrapper.containsMatchingElement(
     <input
       name="myInput"
@@ -17,7 +17,7 @@ it('renders without crashing', () => {
 
 
 it('passes name to id and name fields', () => {
-  const wrapper = shallow(<GenericInput name="myInput" />);
+  const wrapper = shallow(<GenericWidget name="myInput" />);
 
   expect(wrapper.prop('id')).toBe('myInput');
   expect(wrapper.prop('name')).toBe('myInput');
@@ -26,12 +26,12 @@ it('passes name to id and name fields', () => {
 
 it('passes attributes in attrs to raw html', () => {
   let attrs = { pattern: '[0-9]{3}' };
-  let wrapper = shallow(<GenericInput name="myInput" attrs={attrs} />);
+  let wrapper = shallow(<GenericWidget name="myInput" attrs={attrs} />);
 
   expect(wrapper.prop('pattern')).toBe('[0-9]{3}');
 
   attrs = { 'data-target': 'some_val' };
-  wrapper = shallow(<GenericInput name="myInput" attrs={attrs} />);
+  wrapper = shallow(<GenericWidget name="myInput" attrs={attrs} />);
 
   expect(wrapper.prop('data-target')).toBe('some_val');
 });
@@ -39,7 +39,7 @@ it('passes attributes in attrs to raw html', () => {
 
 it('calls onchange handler when change is triggered', () => {
   const onChangeMock = jest.fn(event => event);
-  const wrapper = shallow(<GenericInput name="myInput" onChange={onChangeMock} />);
+  const wrapper = shallow(<GenericWidget name="myInput" onChange={onChangeMock} />);
 
   wrapper.simulate('change');
   expect(onChangeMock.mock.calls.length).toBe(1);
@@ -54,13 +54,13 @@ it('accepts different input types', () => {
     type: 'number',
     name: 'myInput',
   };
-  let wrapper = shallow(<GenericInput {...props} />);
+  let wrapper = shallow(<GenericWidget {...props} />);
   expect(wrapper.prop('type')).toBe('number');
 
   props = {
     type: 'tel',
     name: 'myInput',
   };
-  wrapper = shallow(<GenericInput {...props} />);
+  wrapper = shallow(<GenericWidget {...props} />);
   expect(wrapper.prop('type')).toBe('tel');
 });

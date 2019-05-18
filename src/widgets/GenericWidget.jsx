@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const GenericInput = (props) => {
+const GenericWidget = (props) => {
   const {
     type,
     name,
@@ -22,7 +22,7 @@ const GenericInput = (props) => {
   );
 };
 
-GenericInput.propTypes = {
+GenericWidget.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
@@ -32,11 +32,11 @@ GenericInput.propTypes = {
   attrs: PropTypes.object,
 };
 
-GenericInput.defaultProps = {
+GenericWidget.defaultProps = {
   type: 'text',
   className: 'form__input',
   attrs: {},
   onChange: null,
 };
 
-export default GenericInput;
+export default GenericWidget;
