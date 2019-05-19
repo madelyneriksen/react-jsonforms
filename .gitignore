@@ -1,3 +1,5 @@
 dist/
 coverage/
 node_modules/
+.cache/
+spec.yaml
