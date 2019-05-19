@@ -1,46 +1,72 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Description from '../components/Description';
+import Title from '../components/Title';
+
 
 const GenericWidget = (props) => {
   const {
     type,
     name,
-    onChange,
-    className,
     value,
-    attrs,
+    title,
+    input,
+    onChange,
+    description,
   } = props;
   return (
-    <input
-      type={type}
-      name={name}
-      id={name}
-      value={value}
-      onChange={onChange}
-      className={className}
-      {...attrs}
-    />
+    <React.Fragment>
+      <Title htmlFor={name} {...title} />
+      {'text' in description
+       && <Description {...description} />
+      }
+      <input
+        type={type}
+        name={name}
+        id={name}
+        value={value}
+        onChange={onChange}
+        className={input.className}
+        {...input.attrs}
+      />
+    </React.Fragment>
   );
 };
 
 GenericWidget.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  onChange: PropTypes.func,
-  value: PropTypes.string,
-  // We don't really know for sure what someone may want in their html.
+  onChange: PropTypes.func.isRequired,
   /* eslint-disable-next-line */
-  attrs: PropTypes.object,
+  value: PropTypes.any.isRequired,
+  title: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    /* eslint-disable-next-line */
+    attrs: PropTypes.object,
+  }),
+  description: PropTypes.shape({
+    text: PropTypes.string,
+    className: PropTypes.string,
+    /* eslint-disable-next-line */
+    attrs: PropTypes.object,
+  }),
+  input: PropTypes.shape({
+    className: PropTypes.string,
+    /* eslint-disable-next-line */
+    attrs: PropTypes.object,
+  }),
 };
 
 GenericWidget.defaultProps = {
   type: 'text',
-  className: 'form__input',
-  attrs: {},
-  onChange: null,
-  value: null,
+  description: {},
+  title: {},
+  input: {
+    className: 'form__input',
+    attrs: {},
+  },
 };
 
 export default GenericWidget;
